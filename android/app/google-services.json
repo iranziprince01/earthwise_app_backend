@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "871595644696",
+    "project_id": "earth-wise-app",
+    "storage_bucket": "earth-wise-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871595644696:android:896bed885edaf0bc58706d",
+        "android_client_info": {
+          "package_name": "com.example.earthwise_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArYNgyArbxyx32M0wRIaIZVjPm_QeWOa0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
