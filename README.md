@@ -115,7 +115,7 @@ We welcome contributions from the community! To contribute:
 1. **Fork the repository**
 2. **Create a new branch**
     ```bash
-    git checkout -b feature/earthwise_app
+    git checkout -b feature/earthwise_app_backend
     ```
 3. **Make your changes**
 4. **Commit your changes**
@@ -124,7 +124,7 @@ We welcome contributions from the community! To contribute:
     ```
 5. **Push to the branch**
     ```bash
-    git push origin feature/earthwise_app
+    git push origin feature/earthwise_app_backend
     ```
 6. **Open a pull request**
 
@@ -132,7 +132,7 @@ Please ensure your code meets our [contribution guidelines](CONTRIBUTING.md).
 
 ## License
 
-This project is licensed under the MIT License. Please take a look at the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. Please look at the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
