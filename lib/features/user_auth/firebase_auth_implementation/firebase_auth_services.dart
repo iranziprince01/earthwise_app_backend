@@ -1,75 +1,73 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import '/features/screens/cover_screen.dart';
-import '/features/user_auth/login_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart'; // Importing the Firebase Authentication package
+import 'package:flutter/material.dart'; // Importing the Flutter material package
+import 'package:google_sign_in/google_sign_in.dart'; // Importing the Google Sign-In package
+import 'package:cloud_firestore/cloud_firestore.dart'; // Importing the Cloud Firestore package
+import 'package:firebase_storage/firebase_storage.dart'; // Importing the Firebase Storage package
+import '/features/screens/cover_screen.dart'; // Importing the CoverScreen widget
+import '/features/user_auth/login_screen.dart'; // Importing the LoginScreen widget
 
 class FirebaseAuthService {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final FirebaseAuth _auth = FirebaseAuth.instance; // Initializing FirebaseAuth instance
+  final GoogleSignIn _googleSignIn = GoogleSignIn(); // Initializing GoogleSignIn instance
 
   // Get the current user
   User? getCurrentUser() {
-    return _auth.currentUser;
+    return _auth.currentUser; // Returning the current user
   }
 
   // Sign up with email and password
-  Future<User?> signUpWithEmailAndPassword(
-      String email, String password) async {
+  Future<User?> signUpWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential credential = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      return credential.user;
+          email: email, password: password); // Creating a user with email and password
+      return credential.user; // Returning the created user
     } on FirebaseAuthException catch (e) {
-      print("Error: $e");
+      print("Error: $e"); // Catching and printing any errors
     }
-    return null;
+    return null; // Returning null if an error occurs
   }
 
   // Sign in with email and password
-  Future<User?> signInWithEmailAndPassword(
-      String email, String password) async {
+  Future<User?> signInWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential credential = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      return credential.user;
+          email: email, password: password); // Signing in a user with email and password
+      return credential.user; // Returning the signed-in user
     } on FirebaseAuthException catch (e) {
-      print("Error: $e");
+      print("Error: $e"); // Catching and printing any errors
     }
-    return null;
+    return null; // Returning null if an error occurs
   }
 
   // Sign in with Google
   Future<User?> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleSignInAccount =
-          await _googleSignIn.signIn();
+          await _googleSignIn.signIn(); // Initiating the Google sign-in flow
       final GoogleSignInAuthentication? googleSignInAuthentication =
-          await googleSignInAccount?.authentication;
+          await googleSignInAccount?.authentication; // Getting Google sign-in authentication
 
       final AuthCredential credential = GoogleAuthProvider.credential(
-        idToken: googleSignInAuthentication?.idToken,
-        accessToken: googleSignInAuthentication?.accessToken,
+        idToken: googleSignInAuthentication?.idToken, // Getting ID token
+        accessToken: googleSignInAuthentication?.accessToken, // Getting access token
       );
 
-      UserCredential result = await _auth.signInWithCredential(credential);
-      return result.user;
+      UserCredential result = await _auth.signInWithCredential(credential); // Signing in with Google credentials
+      return result.user; // Returning the signed-in user
     } catch (e) {
-      print(e.toString());
+      print(e.toString()); // Catching and printing any errors
     }
-    return null;
+    return null; // Returning null if an error occurs
   }
 
   // Sign out method
   Future<void> signOut(BuildContext context) async {
-    await _auth.signOut();
-    await _googleSignIn.signOut();
+    await _auth.signOut(); // Signing out from FirebaseAuth
+    await _googleSignIn.signOut(); // Signing out from GoogleSignIn
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-          builder: (context) => CoverScreen(child: LoginScreen())),
+          builder: (context) => CoverScreen(child: LoginScreen())), // Navigating to CoverScreen with LoginScreen
     );
   }
 
@@ -79,7 +77,7 @@ class FirebaseAuthService {
     await FirebaseFirestore.instance
         .collection('User')
         .doc(userId)
-        .set(userProfile);
+        .set(userProfile); // Creating a new document in the User collection with user profile
   }
 
   // Update user profile
@@ -88,11 +86,14 @@ class FirebaseAuthService {
     await FirebaseFirestore.instance
         .collection('User')
         .doc(userId)
-        .update(userProfile);
+        .update(userProfile); // Updating the document in the User collection with user profile
   }
 
   // Delete user profile
   Future<void> deleteUserProfile(String userId) async {
-    await FirebaseFirestore.instance.collection('User').doc(userId).delete();
+    await FirebaseFirestore.instance
+        .collection('User')
+        .doc(userId)
+        .delete(); // Deleting the document from the User collection
   }
 }
