@@ -1,17 +1,22 @@
 {
+  // Define an array of functions configurations
   "functions": [
     {
+      // Specify the source directory for the functions
       "source": "functions",
+      // Name the codebase for these functions
       "codebase": "default",
+      // Define an array of files or directories to ignore
       "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "*.local"
+        "node_modules", // Ignore the node_modules directory
+        ".git", // Ignore the .git directory
+        "firebase-debug.log", // Ignore the firebase-debug.log file
+        "firebase-debug.*.log", // Ignore any firebase-debug.*.log files
+        "*.local" // Ignore any files with a .local extension
       ],
+      // Define an array of pre-deploy commands
       "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run lint"
+        "npm --prefix \"$RESOURCE_DIR\" run lint" // Run the lint script using npm in the resource directory
       ]
     }
   ]
