@@ -1,122 +1,119 @@
 // tracker_screen.dart
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; // Import the Flutter material package
 import 'package:fl_chart/fl_chart.dart'; // Import the fl_chart package for charts and graphs
-import '/features/screens/AR_visualization_screen.dart'; // This Update the import path accordingly
-import '/features/screens/learning_modules_screen.dart'; // Import the LearningModulesScreen
+import '/features/screens/AR_visualization_screen.dart'; // Import AR visualization screen
+import '/features/screens/learning_modules_screen.dart'; // Import the learning modules screen
 
-class TrackerScreen extends StatelessWidget {
+class TrackerScreen extends StatelessWidget { // Define a stateless widget called TrackerScreen
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { // Override the build method
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white, // Set background color to white
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0), // Add padding around the body
+        child: SingleChildScrollView( // Make the body scrollable
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start
             children: [
               const Text(
-                'Carbon Footprint Tracker',
+                'Carbon Footprint Tracker', // Title text
                 style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF00BF63),
+                  fontSize: 24, // Set font size
+                  fontWeight: FontWeight.bold, // Set font weight to bold
+                  color: Color(0xFF00BF63), // Set text color
                 ),
               ),
-              const SizedBox(height: 20), // Padding from top
+              const SizedBox(height: 20), // Add vertical spacing
               Container(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0), // Add padding inside the container
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1791C8),
-                  borderRadius: BorderRadius.circular(10),
+                  color: const Color(0xFF1791C8), // Set background color
+                  borderRadius: BorderRadius.circular(10), // Set border radius
                 ),
                 child: const Row(
                   children: [
                     Icon(
-                      Icons.info_outline,
-                      color: Colors.white,
-                      size: 24,
+                      Icons.info_outline, // Info icon
+                      color: Colors.white, // Set icon color to white
+                      size: 24, // Set icon size
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: 10), // Add horizontal spacing
                     Expanded(
                       child: Text(
-                        'Your carbon footprint is higher than average. Consider taking actions to reduce it.',
+                        'Your carbon footprint is higher than average. Consider taking actions to reduce it.', // Info text
                         style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
+                          fontSize: 16, // Set font size
+                          color: Colors.white, // Set text color to white
                         ),
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 20), // Add vertical spacing
               _buildEmissionsCard(
                 context,
-                'Annual footprint (CO2)',
-                '58.1 tons',
-                '2024',
+                'Annual footprint (CO2)', // Title for annual footprint
+                '58.1 tons', // Value for annual footprint
+                '2024', // Year
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 20), // Add vertical spacing
               _buildEmissionsCard(
                 context,
-                'Monthly',
-                '29.7 kg',
-                '2024',
+                'Monthly', // Title for monthly footprint
+                '29.7 kg', // Value for monthly footprint
+                '2024', // Year
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 20), // Add vertical spacing
               _buildEmissionsCard(
                 context,
-                'Weekly',
-                '10.4 kg',
-                '2024',
+                'Weekly', // Title for weekly footprint
+                '10.4 kg', // Value for weekly footprint
+                '2024', // Year
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 20), // Add vertical spacing
               _buildEmissionsCard(
                 context,
-                'Daily',
-                '2.1 kg',
-                '2024',
+                'Daily', // Title for daily footprint
+                '2.1 kg', // Value for daily footprint
+                '2024', // Year
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 30), // Add vertical spacing
               const Text(
-                'Emission Trends',
+                'Emission Trends', // Title for emission trends section
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF00BF63),
+                  fontSize: 20, // Set font size
+                  fontWeight: FontWeight.bold, // Set font weight to bold
+                  color: Color(0xFF00BF63), // Set text color
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 20), // Add vertical spacing
               AspectRatio(
-                aspectRatio: 1.7,
+                aspectRatio: 1.7, // Set aspect ratio for the chart
                 child: LineChart(
-                  _buildLineChartData(),
+                  _buildLineChartData(), // Build the line chart data
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 30), // Add vertical spacing
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Distribute space evenly
                 children: [
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => LearningModulesScreen(),
+                          builder: (context) => LearningModulesScreen(), // Navigate to learning modules screen
                         ),
                       );
                     },
                     child: const Text(
-                      'Learn more',
-                      style:
-                          TextStyle(color: Colors.white), // Button text color
+                      'Learn more', // Button text
+                      style: TextStyle(color: Colors.white), // Button text color
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          Color(0xFF00BF63), // Set background color to #00BF63
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 15),
+                      backgroundColor: Color(0xFF00BF63), // Set button background color
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15), // Set button padding
                     ),
                   ),
                   ElevatedButton(
@@ -124,42 +121,38 @@ class TrackerScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const ARVisualizationsScreen(),
+                          builder: (context) => const ARVisualizationsScreen(), // Navigate to AR visualizations screen
                         ),
                       );
                     },
                     child: const Text(
-                      'AR/VR',
-                      style:
-                          TextStyle(color: Colors.white), // Button text color
+                      'AR/VR', // Button text
+                      style: TextStyle(color: Colors.white), // Button text color
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          Color(0xFF1791C8), // Set background color to #1791C8
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 15),
+                      backgroundColor: Color(0xFF1791C8), // Set button background color
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15), // Set button padding
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 30), // Add vertical spacing
               const Text(
-                'REDUCTION TIPS:',
+                'REDUCTION TIPS:', // Title for reduction tips section
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF00BF63),
+                  fontSize: 20, // Set font size
+                  fontWeight: FontWeight.bold, // Set font weight to bold
+                  color: Color(0xFF00BF63), // Set text color
                 ),
               ),
-              const SizedBox(height: 10),
-              _buildTip(context, 'Reduce Energy Consumption'),
-              const SizedBox(height: 10),
-              _buildTip(context, 'Minimize Transportation Emissions'),
-              const SizedBox(height: 10),
-              _buildTip(context, 'Adopt Sustainable Eating Habits'),
-              const SizedBox(height: 10),
-              _buildTip(
-                  context, 'Support Renewable Energy and Carbon Offsetting'),
+              const SizedBox(height: 10), // Add vertical spacing
+              _buildTip(context, 'Reduce Energy Consumption'), // Build a tip card
+              const SizedBox(height: 10), // Add vertical spacing
+              _buildTip(context, 'Minimize Transportation Emissions'), // Build a tip card
+              const SizedBox(height: 10), // Add vertical spacing
+              _buildTip(context, 'Adopt Sustainable Eating Habits'), // Build a tip card
+              const SizedBox(height: 10), // Add vertical spacing
+              _buildTip(context, 'Support Renewable Energy and Carbon Offsetting'), // Build a tip card
             ],
           ),
         ),
@@ -167,50 +160,49 @@ class TrackerScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildEmissionsCard(
-      BuildContext context, String title, String value, String year) {
+  Widget _buildEmissionsCard(BuildContext context, String title, String value, String year) { // Function to build emissions card
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
+        color: Colors.white, // Set background color to white
+        borderRadius: BorderRadius.circular(10), // Set border radius
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
+            color: Colors.grey.withOpacity(0.3), // Set shadow color with opacity
+            spreadRadius: 2, // Set shadow spread radius
+            blurRadius: 5, // Set shadow blur radius
+            offset: const Offset(0, 3), // Set shadow offset
           ),
         ],
       ),
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20), // Add padding inside the container
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start
         children: [
           Text(
-            title,
+            title, // Emission type title
             style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
+              fontSize: 18, // Set font size
+              fontWeight: FontWeight.bold, // Set font weight to bold
+              color: Colors.black, // Set text color
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 10), // Add vertical spacing
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween, // Distribute space between elements
             children: [
               Text(
-                value,
+                value, // Emission value
                 style: const TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF00BF63),
+                  fontSize: 36, // Set font size
+                  fontWeight: FontWeight.bold, // Set font weight to bold
+                  color: Color(0xFF00BF63), // Set text color
                 ),
               ),
               Text(
-                year,
+                year, // Emission year
                 style: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey,
+                  fontSize: 18, // Set font size
+                  color: Colors.grey, // Set text color
                 ),
               ),
             ],
@@ -220,27 +212,27 @@ class TrackerScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTip(BuildContext context, String tip) {
+  Widget _buildTip(BuildContext context, String tip) { // Function to build a tip card
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF1791C8),
-        borderRadius: BorderRadius.circular(10),
+        color: const Color(0xFF1791C8), // Set background color
+        borderRadius: BorderRadius.circular(10), // Set border radius
       ),
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20), // Add padding inside the container
       child: Row(
         children: [
           const Icon(
-            Icons.check_circle_outline,
-            color: Colors.white,
-            size: 24,
+            Icons.check_circle_outline, // Check circle icon
+            color: Colors.white, // Set icon color to white
+            size: 24, // Set icon size
           ),
-          const SizedBox(width: 10),
+          const SizedBox(width: 10), // Add horizontal spacing
           Expanded(
             child: Text(
-              tip,
+              tip, // Tip text
               style: const TextStyle(
-                fontSize: 16,
-                color: Colors.white,
+                fontSize: 16, // Set font size
+                color: Colors.white, // Set text color to white
               ),
             ),
           ),
@@ -249,39 +241,39 @@ class TrackerScreen extends StatelessWidget {
     );
   }
 
-  LineChartData _buildLineChartData() {
+  LineChartData _buildLineChartData() { // Function to build line chart data
     return LineChartData(
-      gridData: const FlGridData(show: true),
+      gridData: const FlGridData(show: true), // Show grid
       titlesData: const FlTitlesData(
         leftTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: true),
+          sideTitles: SideTitles(showTitles: true), // Show left titles
         ),
         bottomTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: true),
+          sideTitles: SideTitles(showTitles: true), // Show bottom titles
         ),
       ),
       borderData: FlBorderData(
-        show: true,
+        show: true, // Show border
         border: Border.all(
-          color: Colors.black,
+          color: Colors.black, // Set border color
         ),
       ),
       lineBarsData: [
         LineChartBarData(
           spots: [
-            const FlSpot(0, 3),
-            const FlSpot(1, 1),
-            const FlSpot(2, 4),
-            const FlSpot(3, 2),
-            const FlSpot(4, 5),
-            const FlSpot(5, 3),
-            const FlSpot(6, 4),
+            const FlSpot(0, 3), // Data point
+            const FlSpot(1, 1), // Data point
+            const FlSpot(2, 4), // Data point
+            const FlSpot(3, 2), // Data point
+            const FlSpot(4, 5), // Data point
+            const FlSpot(5, 3), // Data point
+            const FlSpot(6, 4), // Data point
           ],
-          isCurved: true,
-          color: const Color(0xFF00BF63), // Corrected parameter
-          barWidth: 4,
-          isStrokeCapRound: true,
-          dotData: const FlDotData(show: false),
+          isCurved: true, // Make the line curved
+          color: const Color(0xFF00BF63), // Set line color
+          barWidth: 4, // Set line width
+          isStrokeCapRound: true, // Set stroke cap to round
+          dotData: const FlDotData(show: false), // Hide data points
         ),
       ],
     );
