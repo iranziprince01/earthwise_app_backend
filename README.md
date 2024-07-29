@@ -15,7 +15,7 @@
 
 Welcome to the Earthwise mobile app! Earthwise is an innovative mobile application designed to help users lead a more sustainable lifestyle. The app provides tools and resources to track your environmental impact, discover eco-friendly products, and join a community of like-minded individuals committed to protecting our planet and empowering a greener future.
 
-Demo video: [Click here...](https://drive.google.com/file/d/1cl0ZNuKb6JWnyEkKf7m_gmLZaiPLEtQ-/view?usp=sharing)
+Demo video: [Click here...](https://drive.google.com/file/d/1hbK1DJD4wErkLJ5G_cLSS15Uw33Qi43M/view?usp=sharing)
 
 ## Features
 
